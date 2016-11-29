@@ -26,7 +26,7 @@ This artefact was successfully tested for the following versions:
 - The "Manage Salesforce WebService flow with Oauth Access token" policy is created, that is set as the routing policy from the "Service Handler" filter for salesforce.com Web Service :
   
 ![alt text][Screenshot2]
-[Screenshot2]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Screenshot1.png  "Screenshot2"   
+[Screenshot2]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Screenshot2.png  "Screenshot2"   
 
 - Then the client Credentials the API Gateway needs to act as a client to salesforce.com is created :
 
@@ -62,17 +62,37 @@ This artefact was successfully tested for the following versions:
 </soapenv:Envelope>
 ```
 
+- Once the Access Token from salesforce.com is retrieved, it is put in the outgoing request in lieue of the incoming e-mail :
+  * Outgoing sample request
+```
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:enterprise.soap.sforce.com">
+ <soapenv:Header>
+      <urn:SessionHeader>
+       <urn:sessionId>XXXXXXXXXXXXXXXXXX ... XXXXXXXXXXXXXXXXXXXXX</urn:sessionId>
+      </urn:SessionHeader>
+ </soapenv:Header>
+ <soapenv:Body>
+      <urn:getUserInfo/>
+ </soapenv:Body>
+</soapenv:Envelope>
+```
 
+- Expiration management and some renegociation are added. The resulting policy is :
 
+![alt text][Screenshot6]
+[Screenshot6]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Screenshot6.png  "Screenshot6"   
+
+- NOTES :
+  * To enable Oauth support, it must be set up in the instance by running the corresponding script deployOAuthConfig.py (refer p12 of "AxwayAPIGateway_OAuth_Guide.pdf" for more details )
+  * To have a working salesforce.com app, it must be set up in the salesforce.com env, to enable OAuthv2.0 support, and make sure all proper options are enabled to have the JWT flow up and running ( import certificate use to sign/validate signature, etc ...). 
+  But this is out of the scope of current document. You can refer to salesforce.com docs such as OAuth 2.0 JWT Bearer Token Flow.
 
 ## Usage
 ```
 To be completed
 ```
-   
 
 ## Bug and Caveats
-
 ```
 To be completed
 ```
