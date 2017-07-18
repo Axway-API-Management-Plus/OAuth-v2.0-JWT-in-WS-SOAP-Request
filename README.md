@@ -12,6 +12,7 @@ The internal application sends the SOAP Request to the API Gateway, that will ma
 
   
 ![alt text][Screenshot1]
+
 [Screenshot1]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot1.png  "Screenshot1"   
 
 
@@ -26,11 +27,13 @@ This artefact was successfully tested for the following versions:
 - The "Manage Salesforce WebService flow with Oauth Access token" policy is created, that is set as the routing policy from the "Service Handler" filter for salesforce.com Web Service :
   
 ![alt text][Screenshot2]
+
 [Screenshot2]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot2.png  "Screenshot2"   
 
 - Then the client Credentials the API Gateway needs to act as a client to salesforce.com is created :
 
 ![alt text][Screenshot3]
+
 [Screenshot3]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot3.png  "Screenshot3"   
 
 - Details of the OAuth2 Credentials : 
@@ -39,12 +42,14 @@ This artefact was successfully tested for the following versions:
   * The proper additional JWT claims is set to make sure the authentication is propagated to salesforce.com
 
 ![alt text][Screenshot4]
+
 [Screenshot4]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot4.png  "Screenshot4"   
 
 - Details of the OAuth2 Provider Settings: 
   * The Authorization Endpoint and the Token Endpoint must be set as per salesforce.com settings:
 
 ![alt text][Screenshot5]
+
 [Screenshot5]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot5.png  "Screenshot5"   
 
 - As the request is SOAP, an incoming field is used to retrieve the identifier of the requester (here an e-mail address) and to put it in the authentication.subject.id
@@ -80,6 +85,7 @@ This artefact was successfully tested for the following versions:
 - Expiration management and some renegociation are added. The resulting policy is :
 
 ![alt text][Screenshot6]
+
 [Screenshot6]: https://github.com/Axway-API-Management/OAuth-v2.0-JWT-in-WS-SOAP-Request/blob/master/Readme/Screenshot6.png  "Screenshot6"   
 
 - NOTES :
